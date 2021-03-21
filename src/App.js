@@ -1,10 +1,10 @@
-import { React, useState } from "react";
+import React from "react";
 import './App.css';
-import Login from "./components/Login"
+// import Login from "./components/Login"
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Preferences from './components/Preferences';
-import useToken from './useToken';
+// import useToken from './useToken';
 //  function setToken(userToken) {
 //   sessionStorage.setItem('token', JSON.stringify(userToken));
 //   }

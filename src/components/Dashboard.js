@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 function Dashboard() {
-	let [ resources, setResources ] = useState([ {} ]);
+	// let [ resources, setResources ] = useState([ {} ]);
 	//     axios.get('')
 	//   .then(function (response) {
 	//     // handle success
@@ -23,6 +23,7 @@ function Dashboard() {
 	const [ error, setError ] = useState(null);
 
 	useEffect(() => {
+		const ac = new AbortController();
 		axios(url)
 			.then((response) => {
 				setData(response.data);
@@ -33,7 +34,11 @@ function Dashboard() {
 			})
 			.finally(() => {
 				setLoading(false);
+				 
+			}).then(() => {
+				ac.abort();
 			});
+			
 	});
 	if (loading) return 'Loading...';
 	if (error) return 'Error!';
@@ -49,7 +54,7 @@ function Dashboard() {
 				{data ? (
 					data.map((x) => (
 						<div style={style}>
-							<a href={x.link} target="_blank">
+							<a href={x.link} target="_blank" rel="noreferrer"> 
 								<div>{x.title}</div>
 							</a>
 						</div>
